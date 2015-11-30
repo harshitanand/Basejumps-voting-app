@@ -25,7 +25,7 @@ exports.show = function(req, res) {
   Thing.findById(req.params.id, function (err, thing) {
     if(err) { return handleError(res, err); }
     if(!thing) { return res.status(404).send('Not Found'); }
-    return res.json(thing);
+    return res.send(JSON.stringify({status:"success", data:thing}));
   });
 };
 
