@@ -1,0 +1,10 @@
+div(ng-include='"components/navbar/navbar.html"')
+  
+.container
+  .row
+    .col-lg-12
+      h1.page-header Features:
+      ul.nav.nav-tabs.nav-stacked.col-md-4.col-lg-4.col-sm-6(ng-repeat='thing in awesomeThings')
+        li
+          a(href='#', tooltip='{{thing.info}}' ng-click='question(thing)')
+            | {{thing.name}}
