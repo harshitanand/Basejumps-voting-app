@@ -3,8 +3,12 @@ div(ng-include='"components/navbar/navbar.html"')
 .container
   .row
     .col-lg-12
-      h1.page-header Features:
-      ul.nav.nav-tabs.nav-stacked.col-md-4.col-lg-4.col-sm-6(ng-repeat='thing in awesomeThings')
-        li
+      h1 
+        .col-xs-12.col-md-12.col-lg-12.col-sm-12.page-header
+          span.glyphicon.glyphicon-search.search-icon
+          input.col-lg-11(type='text', autocomplete='off', placeholder='Search Here!', ng-model = 'searchText')
+      
+      .col-xs-12.col-md-12.col-lg-12.col-sm-12(ng-repeat='thing in awesomeThings | filter:searchText')
+        .well.well-lg
           a(href='#', tooltip='{{thing.info}}' ng-click='question(thing)')
             | {{thing.name}}
