@@ -1,2 +1,32 @@
-.col-md-12
-    | This is the question view.
+div(ng-include='"components/navbar/navbar.html"')
+
+.col-xs-2  
+.col-xs-8
+  .jumbotron
+    p.lead Question.
+    h3
+      | {{data.name}}
+    p
+      | {{data.info}}
+  .left-layout 
+  .col-xs-12.col-lg-12.col-md-12.col-sm-12
+    .col-xs-9
+      h3#addoption.well
+        form(ng-submit='addoption()')
+          .form-group.col-xs-11
+            input.form-control(placeholder='Add Option', ng-model='option', ng-disabled='saving', autofocus='')
+    .col-xs-3
+      button.addoption.btn.btn-md.btn-success.pull-right(ng-click='moreoption()')
+        | Add Options &nbsp;
+        i.glyphicon.glyphicon-plus
+  
+  .container-fluid        
+    form(ng-submit='vote()', name='reqform', ng-show='canvote')
+      div#listing(ng-repeat='option in data.options')
+        label
+          input(type='radio',name='ans',value="{{option.name}}") 
+          {{option.name}}
+      button#vote.btn.btn-lg.btn-primary.pull-right(type='submit')
+        | Vote &nbsp;
+        i.fa.fa-thumbs-up
+.col-xs-2
